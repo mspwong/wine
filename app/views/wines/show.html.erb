@@ -1,0 +1,33 @@
+<p>
+  <b>Id:</b>
+  <%=h @wine.id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @wine.name %>
+</p>
+
+<p>
+  <b>Varietal:</b>
+  <%=h @wine.varietal %>
+</p>
+
+<p>
+  <b>Vintage:</b>
+  <%=h @wine.vintage %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%=h @wine.region %>
+</p>
+
+<p>
+  <b>Item No:</b>
+  <%=h @wine.item_no %>
+</p>
+
+
+<%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%= link_to 'Back', wines_path %>

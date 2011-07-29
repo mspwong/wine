@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+primus:
+  name: Veramonte Primus
+  varietal: Other Red Wind
+  vintage: 2007
+  region: Chile, South America
+  item_no: 99604
+
+cabernet:
+  name: Tilia Cabernet Sauvignon
+  varietal: Cabernet Sauvignon
+  vintage: 2009
+  region: Argentina, South America
+  item_no: 105748
