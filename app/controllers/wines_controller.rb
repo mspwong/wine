@@ -80,7 +80,7 @@ class WinesController < ApplicationController
 
   private
 
-    def find_wine
-      @wine = Wine.find(params[:id])
-    end
+  def find_wine
+    @wine = Wine.find(params[:id])
+  end
 end

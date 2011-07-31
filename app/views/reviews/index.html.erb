@@ -1,0 +1,23 @@
+<h1>Reviews for <%= @wine.name %></h1>
+
+<table>
+  <tr>
+    <th>Reviewer</th>
+    <th>Review</th>
+  </tr>
+
+  <% for review in @reviews %>
+    <tr>
+      <td><%=h review.reviewer %></td>
+      <td><%=h review.body %></td>
+      <td><%= link_to 'Show', wine_review_path(@wine, review) %></td>
+      <td><%= link_to 'Edit', edit_wine_review_path(@wine, review) %></td>
+      <td><%= link_to 'Destroy', wine_review_path(@wine, review), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Review', new_wine_review_path(@wine) %> |
+<%= link_to 'Back to '+@wine.name, @wine %>

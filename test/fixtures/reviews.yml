@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  reviewer: Robert Parker
+  body: good nose
+  wine: 
+
+two:
+  reviewer: Wine Spectator
+  body: long finish
+  wine: 

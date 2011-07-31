@@ -1,0 +1,7 @@
+<h1>Edit review for <%= @wine.name %></h1>
+
+<%= render :partial => 'review_form' %>
+
+<%= link_to 'Show', wine_review_path(@wine, @review) %> |
+<%= link_to 'Reviews for '+@wine.name, wine_reviews_path(@wine) %>
+
