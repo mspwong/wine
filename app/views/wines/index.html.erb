@@ -1,4 +1,4 @@
-<h1>Listing wines</h1>
+<h1>Wine Listing</h1>
 
 <table>
   <tr>
@@ -20,7 +20,7 @@
     <td><%=h wine.item_no %></td>
     <td><%= link_to 'Show', wine %></td>
     <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
-    <td><%= link_to 'Destroy', wine, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', wine, :confirm => 'Are you sure?', :method => :delete, :style => "color:red;" %></td>
   </tr>
 <% end %>
 </table>

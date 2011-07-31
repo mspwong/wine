@@ -1,4 +1,7 @@
 class WinesController < ApplicationController
+
+  before_filter :find_wine, :only => [:show, :edit, :update, :destroy]
+
   # GET /wines
   # GET /wines.xml
   def index
@@ -13,8 +16,6 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.xml
   def show
-    @wine = Wine.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @wine }
@@ -34,7 +35,6 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
-    @wine = Wine.find(params[:id])
   end
 
   # POST /wines
@@ -56,8 +56,6 @@ class WinesController < ApplicationController
   # PUT /wines/1
   # PUT /wines/1.xml
   def update
-    @wine = Wine.find(params[:id])
-
     respond_to do |format|
       if @wine.update_attributes(params[:wine])
         format.html { redirect_to(@wine, :notice => 'Wine was successfully updated.') }
@@ -72,7 +70,6 @@ class WinesController < ApplicationController
   # DELETE /wines/1
   # DELETE /wines/1.xml
   def destroy
-    @wine = Wine.find(params[:id])
     @wine.destroy
 
     respond_to do |format|
@@ -80,4 +77,10 @@ class WinesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+
+    def find_wine
+      @wine = Wine.find(params[:id])
+    end
 end
