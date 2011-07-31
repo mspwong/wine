@@ -1,27 +1,43 @@
-<% form_for(@wine) do |f| %>
-    <%= f.error_messages %>
+<% @wine.tags.build if @wine.tags.empty? %>
+<% form_for(@wine) do |wine_form| %>
+    <%= wine_form.error_messages %>
 
     <p>
-      <%= f.label :name %>*<br />
-      <%= f.text_field :name %>
+      <%= wine_form.label :name %>*<br/>
+      <%= wine_form.text_field :name %>
     </p>
     <p>
-      <%= f.label :varietal %><br />
-      <%= f.text_field :varietal %>
+      <%= wine_form.label :varietal %><br/>
+      <%= wine_form.text_field :varietal %>
     </p>
     <p>
-      <%= f.label :vintage %><br />
-      <%= f.text_field :vintage %>
+      <%= wine_form.label :vintage %><br/>
+      <%= wine_form.text_field :vintage %>
     </p>
     <p>
-      <%= f.label :region %><br />
-      <%= f.text_field :region %>
+      <%= wine_form.label :region %><br/>
+      <%= wine_form.text_field :region %>
     </p>
     <p>
-      <%= f.label :item_no %>*<br />
-      <%= f.text_field :item_no %>
+      <%= wine_form.label :item_no %>*<br/>
+      <%= wine_form.text_field :item_no %>
     </p>
+
+    <h2>Tags</h2>
+    <% wine_form.fields_for :tags do |tag_form| %>
+        <p>
+          <%= tag_form.label :name, 'Tag:' %>
+          <%= tag_form.text_field :name %>
+        </p>
+        <% unless tag_form.object.nil? || tag_form.object.new_record? %>
+            <p>
+              <%= tag_form.label :_destroy, 'Remove:' %>
+              <%= tag_form.check_box :_destroy %>
+            </p>
+        <% end %>
+    <% end %>
+
     <p>
-      <%= f.submit 'Save' %>
+      <%= wine_form.submit 'Save' %>
     </p>
 <% end %>

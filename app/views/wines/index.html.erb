@@ -8,6 +8,7 @@
     <th>Vintage</th>
     <th>Region</th>
     <th>Item No</th>
+    <th>Tags</th>
   </tr>
 
 <% @wines.each do |wine| %>
@@ -18,6 +19,7 @@
     <td><%=h wine.vintage %></td>
     <td><%=h wine.region %></td>
     <td><%=h wine.item_no %></td>
+    <td><%=h wine.tags.collect { |t| t.name } %></td>
     <td><%= link_to 'Show', wine %></td>
     <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
     <td><%= link_to 'Destroy', wine, :confirm => 'Are you sure?', :method => :delete, :style => "color:red;" %></td>

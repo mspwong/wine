@@ -28,6 +28,11 @@
   <%=h @wine.item_no %>
 </p>
 
+<p>
+  <b>Tags</b>
+  <%=h @wine.tags.collect { |t| t.name } %>
+</p>
+
 
 <%= link_to 'Edit', edit_wine_path(@wine) %> |
 <%= link_to 'Wines', wines_path %> |
