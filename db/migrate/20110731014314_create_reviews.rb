@@ -1,6 +1,6 @@
 class CreateReviews < ActiveRecord::Migration
   def self.up
-    create_table :reviews do |t|
+    create_table :reviews, :force=>true do |t|
       t.string :reviewer, :null=>false
       t.text :body
       t.references :wine, :null=>false
