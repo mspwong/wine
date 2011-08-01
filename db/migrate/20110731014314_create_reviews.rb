@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.string :reviewer, :null=>false
       t.text :body
       t.references :wine, :null=>false
-      t.timestamps
+      t.timestamps :null=>false
     end
   end
 

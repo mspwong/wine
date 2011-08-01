@@ -7,7 +7,7 @@ class CreateWines < ActiveRecord::Migration
       t.integer "vintage"
       t.string "region"
       t.integer "item_no", :null=>false
-      t.timestamps
+      t.timestamps :null=>false
     end
   end
 
