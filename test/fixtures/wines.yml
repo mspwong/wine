@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20110731053333
+#
+# Table name: wines
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)     not null
+#  varietal   :string(255)
+#  vintage    :integer(4)
+#  region     :string(255)
+#  item_no    :integer(4)      not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 primus:
