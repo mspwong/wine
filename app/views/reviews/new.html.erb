@@ -2,4 +2,4 @@
 
 <%= render :partial => 'review_form' %>
 
-<%= link_to 'Reviews for '+@wine.name, wine_reviews_path(@wine) %>
+<%= link_to '>> '+@wine.name+' Reviews', wine_reviews_path(@wine) %>

@@ -11,4 +11,4 @@
 </p>
 
 <%= link_to 'Edit', edit_wine_review_path(@wine, @review) %> |
-<%= link_to 'Reviews for '+@wine.name, wine_reviews_path(@wine) %>
+<%= link_to '>> '+@wine.name+' Reviews', wine_reviews_path(@wine) %>
