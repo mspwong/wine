@@ -22,16 +22,24 @@ tilia.item_no = 105748
 tilia.tags = [Tag.new(:name=>"big, bold, showy", :wine=>tilia)]
 tilia.save!
 
-mary_review = Review.new
-mary_review.reviewer = "Mary"
-mary_review.body = "Big and bold"
-mary_review.wine = tilia
-mary_review.save!
+mary = User.find_by_name("Mary") || User.new(:name=>"Mary")
+mary.email = "mary@abc.com"
+mary.save!
 
-jari_review = Review.new
-jari_review.reviewer = "Jari"
-jari_review.body = "Over the top"
-jari_review.wine = tilia
-jari_review.save!
+jari = User.find_by_name("Jari") || User.new(:name=>"Jari")
+jari.email = "jari@abc.com"
+jari.save!
+
+mary_review_for_tilia = Review.new
+mary_review_for_tilia.user = mary
+mary_review_for_tilia.body = "Big and bold"
+mary_review_for_tilia.wine = tilia
+mary_review_for_tilia.save!
+
+jari_review_for_tilia = Review.new
+jari_review_for_tilia.user = jari
+jari_review_for_tilia.body = "Over the top"
+jari_review_for_tilia.wine = tilia
+jari_review_for_tilia.save!
 
 

@@ -9,9 +9,11 @@ class CreateWines < ActiveRecord::Migration
       t.integer "item_no", :null=>false
       t.timestamps :null=>false
     end
+    add_index :wines, [:name], :unique=>true
   end
 
   def self.down
+    remove_index :wines, :name
     drop_table :wines
   end
 end

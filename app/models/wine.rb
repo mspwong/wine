@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110731053333
+# Schema version: 20110802051535
 #
 # Table name: wines
 #
@@ -18,8 +18,9 @@ class Wine < ActiveRecord::Base
   has_many :tags
 
   validates_presence_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :maximum => 30
-  validates_numericality_of :vintage, :only_integer => true, :allow_nil => true
+  validates_numericality_of :vintage, :only_integer => true, :allow_blank => true
   validates_presence_of :item_no
   validates_numericality_of :item_no, :only_integer => true
   validates_associated :reviews
