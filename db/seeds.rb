@@ -22,6 +22,14 @@ tilia.item_no = 105748
 tilia.tags = [Tag.new(:name=>"big, bold, showy", :wine=>tilia)]
 tilia.save!
 
+beringer = Wine.find_by_name("Beringer Private Reserve") || Wine.new(:name=>"Beringer Private Reserve")
+beringer.varietal = "Cabernet Sauvignon"
+beringer.vintage = 2005
+beringer.region = "Napa Valley"
+beringer.item_no = 676787
+beringer.tags = [Tag.new(:name=>"food friendly", :wine=>beringer)]
+beringer.save!
+
 mary = User.find_by_name("Mary") || User.new(:name=>"Mary")
 mary.email = "mary@abc.com"
 mary.save!
@@ -41,5 +49,13 @@ jari_review_for_tilia.user = jari
 jari_review_for_tilia.body = "Over the top"
 jari_review_for_tilia.wine = tilia
 jari_review_for_tilia.save!
+
+jari_review_for_beringer = Review.new
+jari_review_for_beringer.user = jari
+jari_review_for_beringer.body = "Good with Italian food"
+jari_review_for_beringer.wine = beringer
+jari_review_for_beringer.save!
+
+
 
 

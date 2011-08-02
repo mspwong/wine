@@ -14,8 +14,8 @@
 #
 
 class Wine < ActiveRecord::Base
-  has_many :reviews
-  has_many :tags
+  has_many :reviews, :dependent => :destroy
+  has_many :tags, :dependent => :destroy
 
   validates_presence_of :name
   validates_uniqueness_of :name, :case_sensitive => false
