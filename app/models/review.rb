@@ -19,7 +19,7 @@ class Review < ActiveRecord::Base
 
   validates_presence_of :body
   validates_length_of :body, :maximum => 100
-  validates_inclusion_of :body, :in => %w(shit fuck), :message => "must not contained foul words"
+  validates_exclusion_of :body, :in => %w(shit fuck), :message => "must not contained foul words"
   validates_each :body do |model, attr, value|
     model.errors.add(attr, 'must not be foul phases') if value && (value.include? 'fucking bad')
     model.errors.add_to_base("This review is no good.  Please start over.") if !model.errors.blank?
