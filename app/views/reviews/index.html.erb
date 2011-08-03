@@ -8,7 +8,7 @@
 
   <% for review in @reviews %>
     <tr>
-      <td><%=h review.reviewer.name %></td>
+      <td><%=h review.reviewer.name if review.reviewer %></td>
       <td><%=h review.body %></td>
       <td><%= link_to 'Show', wine_review_path(@wine, review) %></td>
       <td><%= link_to 'Edit', edit_wine_review_path(@wine, review) %></td>
