@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @wine.reviews.build(params[:review])
-    @review.user = User.find_by_email "mary@abc.com"      # TODO: add support for user entering user info
+    @review.reviewer = User.find_by_email "mary@abc.com"      # TODO: add support for user entering user info
     if @review.save
       redirect_to wine_review_url(@wine, @review)
     else
