@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110802051535
+# Schema version: 20110803193037
 #
 # Table name: users
 #
@@ -8,11 +8,21 @@
 #  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  active     :boolean(1)      default(TRUE)
 #
 
 class User < ActiveRecord::Base
-  has_many :reviews
+  has_many :reviews, :foreign_key => "reviewer_id"
 
   validates_length_of :name, :maximum => 50
+
+  after_update :update_reviews
+
+  def update_reviews
+    reviews.each do |r|
+      r.update_attribute(:active, active)
+      r.save!
+    end
+  end
 
 end

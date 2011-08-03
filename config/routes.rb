@@ -35,6 +35,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home"
 
   map.resources :wines, :has_many => :reviews
+  map.resources :users, :has_many => :reviews,
+                        :member => {:activate => :get}
 
   # See how all your routes lay out with "rake routes"
 

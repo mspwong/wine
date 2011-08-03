@@ -1,0 +1,27 @@
+<p>
+  <b>Id:</b>
+  <%=h @user.id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @user.active %>
+</p>
+
+<p>
+  <b>Reviews</b>
+  <%=h @reviews.collect { |r| r.body } %>
+</p>
+
+<%= link_to '>> Toggle Active/Inactive', activate_user_path %>
+<%= link_to '>> Wines', wines_path %>
