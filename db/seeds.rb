@@ -32,10 +32,12 @@ beringer.save!
 
 mary = User.find_by_name("Mary") || User.new(:name=>"Mary")
 mary.email = "mary@abc.com"
+mary.active = true
 mary.save!
 
 jari = User.find_by_name("Jari") || User.new(:name=>"Jari")
 jari.email = "jari@abc.com"
+jari.active = true
 jari.save!
 
 mary_review_for_tilia = Review.new
