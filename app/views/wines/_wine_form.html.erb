@@ -23,10 +23,9 @@
       <%= wine_form.text_field :item_no %>
     </p>
 
-    <h2>Tags</h2>
     <% wine_form.fields_for :tags do |tag_form| %>
         <p>
-          <%= tag_form.label :name, 'Tag:' %>
+          <%= tag_form.label :name, 'Tags:' %>
           <%= tag_form.text_field :name %>
         </p>
         <% unless tag_form.object.nil? || tag_form.object.new_record? %>
