@@ -5,6 +5,9 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = @wine.reviews
+    if params[:active_only_reviews]
+      @reviews = @reviews.select { |r| r.reviewer && r.reviewer.active }
+    end
   end
 
   def show
