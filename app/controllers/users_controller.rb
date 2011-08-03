@@ -21,7 +21,10 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
-    @reviews = @user.reviews
+    @reviews = @user.reviews.inject("") do |memo, r|
+      memo.concat("; ") if !memo.blank?
+      memo + r.body
+    end
   end
 
 end
