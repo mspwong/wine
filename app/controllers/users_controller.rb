@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_filter :find_user, :only => [:index, :show, :new, :create, :edit, :update, :destroy, :activate]
 
   def show
+    @reviews_text = @user.reviews.inject("") do |memo, r|
+      memo.concat("; ") if !memo.blank?
+      memo + r.body
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -21,10 +26,6 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
-    @reviews = @user.reviews.inject("") do |memo, r|
-      memo.concat("; ") if !memo.blank?
-      memo + r.body
-    end
-  end
+ end
 
 end
