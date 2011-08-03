@@ -1,6 +1,6 @@
 class AddActiveToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :active, :boolean, :default=>false
+    add_column :users, :active, :boolean, :default=>true
     User.update_all ["active = ?", true]
   end
 
