@@ -1,0 +1,21 @@
+# == Schema Information
+# Schema version: 20110803193037
+#
+# Table name: tags
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)     not null
+#  wine_id    :integer(4)      not null
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+tag1:
+  name: big
+  wine: primus
+
+two:
+  name: dry
+  wine: cabernet

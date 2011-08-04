@@ -14,12 +14,17 @@
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  reviewer: Robert Parker
+review_for_primus_1:
+  reviewer: parker
   body: good nose
-  wine: 
+  wine: primus
 
-two:
-  reviewer: Wine Spectator
+review_for_primus_2:
+  reviewer: wine_spectator
+  body: clean
+  wine: primus
+
+review_for_cabernet:
+  reviewer: wine_spectator
   body: long finish
-  wine: 
+  wine: cabernet
