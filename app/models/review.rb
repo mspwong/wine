@@ -15,7 +15,7 @@
 require "ap"
 
 class Review < ActiveRecord::Base
-  belongs_to :reviewer, :class_name => "User", :conditions => "active = true"
+  belongs_to :reviewer, :class_name => "User"
   belongs_to :wine
 
   validates_presence_of :body
