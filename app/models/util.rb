@@ -1,7 +1,7 @@
 class Util
 
-  def self.closest_fibonacci(input)
-    raise "number must be a positive integer" unless input.is_a?(Integer) && input > 0
+  def self.closest_fibonacci_smaller_or_equal_to(input)
+    raise "number must be a positive integer" if !input.is_a?(Integer) || input < 0
     return input if input <= 1
 
     sequence = [0, 1]
