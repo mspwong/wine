@@ -6,6 +6,16 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:wine_spectator)
   end
 
+  test "validate valid user" do
+    assert_valid User.new(:name => "test name")
+    assert_valid User.new(:name => "12345678901234567890123456789012345678901234567890")
+  end
+
+  test "validate invalid user" do
+    assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new() }
+    assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new(:name => "123456789012345678901234567890123456789012345678901") }
+  end
+
   test "find user's reviews excludes reviews that are inactive'" do
     assert_equal 2, @user.reviews.size
     assert @user.reviews.first.active
