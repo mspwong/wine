@@ -12,4 +12,18 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, user.reviews.size
   end
 
+  test "update user synchronizes its reviews status" do
+    user = users(:wine_spectator)
+    assert user.active
+    assert user.reviews
+    assert_equal 2, user.reviews.size
+    user.reviews.each { |r| assert r.active }
+
+    user.update_attribute(:active, false)
+    assert !user.active
+    assert user.reviews
+    assert_equal 2, user.reviews.size
+    user.reviews.each { |r| assert !r.active }
+  end
+
 end

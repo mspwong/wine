@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   def update_reviews
     reviews.each do |r|
       r.update_attribute(:active, active)
-      r.save!
     end
   end
 
