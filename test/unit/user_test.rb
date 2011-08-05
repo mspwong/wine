@@ -5,15 +5,22 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = users(:wine_spectator)
   end
+  subject { @user }
 
-  test "validate valid user" do
-    assert_valid User.new(:name => "test name")
-    assert_valid User.new(:name => "12345678901234567890123456789012345678901234567890")
+  should_have_many :reviews
+
+  context "Validate a valid user" do
+    should("validate") do
+      assert_valid User.new(:name => "test name")
+      assert_valid User.new(:name => "12345678901234567890123456789012345678901234567890")
+    end
   end
 
-  test "validate invalid user" do
-    assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new() }
-    assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new(:name => "123456789012345678901234567890123456789012345678901") }
+  context "Validate an invalid user" do
+    should("raise AssertionFailedError") do
+      assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new() }
+      assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new(:name => "123456789012345678901234567890123456789012345678901") }
+    end
   end
 
   test "find user's reviews excludes reviews that are inactive'" do
@@ -28,13 +35,13 @@ class UserTest < ActiveSupport::TestCase
   test "update user synchronizes its reviews status" do
     setup do
       assert @user.active
-      assert_equal 2, @user.reviews.size
       @user.reviews.each { |r| assert r.active }
     end
 
-    @user.update_attribute(:active, false)
+    assert_no_difference '@user.reviews.size' do
+      @user.update_attribute(:active, false)
+    end
     assert !@user.active
-    assert_equal 2, @user.reviews.size
     @user.reviews.each { |r| assert !r.active }
   end
 
