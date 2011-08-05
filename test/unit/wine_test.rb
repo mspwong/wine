@@ -2,6 +2,10 @@ require 'test_helper'
 
 class WineTest < ActiveSupport::TestCase
 
+  should_have_many :reviews
+  should_have_many :tags
+  should_have_many :reviewers
+
  test "find non existing wine" do
     wine = Wine.find_by_name("Not to be found")
     assert !wine
@@ -30,6 +34,11 @@ class WineTest < ActiveSupport::TestCase
   test "save valid wine" do
     wine = Wine.new(:name => "Test wine", :item_no => 12345)
     assert wine.save
+  end
+
+  test "find wine's reviewers'" do
+    wine = wines(:primus)
+    assert_equal 2, wine.reviewers.size
   end
 
   test "update wine synchronizes its reviews status" do
