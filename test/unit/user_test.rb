@@ -10,14 +10,14 @@ class UserTest < ActiveSupport::TestCase
   should_have_many :reviews
 
   context "Validate a valid user" do
-    should("validate") do
+    should "validate" do
       assert_valid User.new(:name => "test name")
       assert_valid User.new(:name => "12345678901234567890123456789012345678901234567890")
     end
   end
 
   context "Validate an invalid user" do
-    should("raise AssertionFailedError") do
+    should "raise AssertionFailedError" do
       assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new() }
       assert_raise(Test::Unit::AssertionFailedError) { assert_valid User.new(:name => "123456789012345678901234567890123456789012345678901") }
     end
