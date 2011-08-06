@@ -56,6 +56,17 @@ jari_review_for_beringer.body = "Good with Italian food"
 jari_review_for_beringer.wine = beringer
 jari_review_for_beringer.save!
 
+discount = Program.find_by_name("discount") || Program.new(:name=>"discount")
+discount.users << mary
+discount.save!
+
+preview = Program.find_by_name("preview") || Program.new(:name=>"preview")
+preview.users << mary
+preview.save!
+
+
+
+
 
 
 

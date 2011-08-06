@@ -9,6 +9,7 @@ class UserTest < ActiveSupport::TestCase
 
   should_have_many :reviews
   should_have_many :wines
+  should_have_and_belong_to_many :programs
 
   context "Validating a valid user" do
     should "validate" do
