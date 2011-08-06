@@ -1,23 +1,18 @@
 # == Schema Information
 # Schema version: 20110806015241
 #
-# Table name: users
+# Table name: programs
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(255)     not null
-#  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  active     :boolean(1)      default(TRUE)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-parker:
-  name: Robert Parker
-  email: rparker@abc.com
+discount:
+  name: discount
 
-wine_spectator:
-  name: Wine Spectator
-  email: spectator@abc.com
-  programs: discount, preview
+preview:
+  name: preview

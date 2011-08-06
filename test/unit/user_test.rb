@@ -51,8 +51,17 @@ class UserTest < ActiveSupport::TestCase
   end
 
   context "Given a user" do
-    should "be able to get to the wines it reviewed" do
+    should "be able to navigate to the wines it reviewed" do
       assert_equal 2, @user.wines.size
+    end
+  end
+
+  context "Given a user" do
+    should "be able to navigate to the programs it belongs to" do
+      assert_equal 2, @user.programs.size
+
+      parker = users(:parker)
+      assert_equal 0, parker.programs.size
     end
   end
 
