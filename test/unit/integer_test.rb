@@ -2,7 +2,7 @@ require "test_helper"
 
 class IntegerTest < ActiveSupport::TestCase
 
-  context "regression testing:  " do
+  context "spot regression testing:  " do
     context "an integer/fixnum/bignum" do
       should "retain core Integer behavior" do
         test_fixnum = 4
