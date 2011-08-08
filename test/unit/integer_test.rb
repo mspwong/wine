@@ -20,6 +20,14 @@ class IntegerTest < ActiveSupport::TestCase
     should "retain its standard library methods" do
       assert Integer, 4.class
       assert 4.integer?
+      assert 4 == 4
+      assert 4.eql?(4)
+      four = 4
+      assert 4 == four
+      assert 4.eql?(four)
+      assert 4 == 4.0
+      assert !4.eql?(4.0)
+      assert 3 < 4
       assert_equal 4, 4.round
       assert_equal 4, 4.ceil
       assert_equal 1, 4.modulo(3)
