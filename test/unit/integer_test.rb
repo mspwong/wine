@@ -65,6 +65,7 @@ class IntegerTest < ActiveSupport::TestCase
       assert_raise(NoMethodError) { 0.5.closest_fibonacci_smaller_or_equal_to }
       assert_raise(NoMethodError) { 4.5.closest_fibonacci_smaller_or_equal_to }
       assert_raise(NoMethodError) { -0.5.closest_fibonacci_smaller_or_equal_to }
+      assert_raise(NoMethodError) { "abc".closest_fibonacci_smaller_or_equal_to }
     end
   end
 
