@@ -62,7 +62,14 @@ class IntegerTest < ActiveSupport::TestCase
       assert_equal 13, 15.closest_fibonacci_smaller_or_equal_to
       assert_equal 13, 20.closest_fibonacci_smaller_or_equal_to
       assert_equal 21, 21.closest_fibonacci_smaller_or_equal_to
-      assert_equal 63245986, 99999999.closest_fibonacci_smaller_or_equal_to
+      test_fixnum = 99999999
+      assert test_fixnum.is_a?(Fixnum)
+      assert !test_fixnum.is_a?(Bignum)
+      assert_equal 63245986, test_fixnum.closest_fibonacci_smaller_or_equal_to
+      test_bignum = 999999999999999999999999999999
+      assert !test_bignum.is_a?(Fixnum)
+      assert test_bignum.is_a?(Bignum)
+      assert_not_nil test_bignum.closest_fibonacci_smaller_or_equal_to
 
       assert_not_nil Time.now.to_i.closest_fibonacci_smaller_or_equal_to
     end
