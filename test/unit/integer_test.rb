@@ -29,6 +29,7 @@ class IntegerTest < ActiveSupport::TestCase
       assert !89.even?
       assert !88.odd?
       assert 89.odd?
+      assert Time.now.to_i.is_a?(Integer)
     end
   end
 
@@ -54,6 +55,8 @@ class IntegerTest < ActiveSupport::TestCase
       assert_equal 13, 20.closest_fibonacci_smaller_or_equal_to
       assert_equal 21, 21.closest_fibonacci_smaller_or_equal_to
       assert_equal 63245986, 99999999.closest_fibonacci_smaller_or_equal_to
+
+      assert_not_nil Time.now.to_i.closest_fibonacci_smaller_or_equal_to
     end
   end
 
