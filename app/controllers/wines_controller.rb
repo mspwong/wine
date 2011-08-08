@@ -34,7 +34,12 @@ class WinesController < ApplicationController
   end
 
   # GET /wines/1/edit
+  # GET /wines/1/edit.xml
   def edit
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.xml { render :xml => @wine }
+    end
   end
 
   # POST /wines

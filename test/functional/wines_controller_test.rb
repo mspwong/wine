@@ -74,6 +74,6 @@ class WinesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to wines_path
-    assert_not_nil assigns(:wine)
+    assert assigns(:wine).destroyed?
   end
 end
