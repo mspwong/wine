@@ -2,13 +2,29 @@ require 'test_helper'
 
 class WinesControllerTest < ActionController::TestCase
   test "should route properly" do
-    assert_generates wines_path, :controller => "wines"
-    assert_generates new_wine_path, :controller => "wines", :action => "new"
-    assert_generates "wines/1", :controller => "wines", :action => "show", :id => 1
-    assert_generates "#{wines_path}/1", :controller => "wines", :action => "show", :id => 1
-    assert_generates "#{wines_path}/new", :controller => "wines", :action => "new"
+    assert_recognizes({:controller => "wines", :action => "index"}, :path => wines_path)
+    assert_recognizes({:controller => "wines", :action => "create"}, {:path => wines_path, :method => "post"})
+    assert_recognizes({:controller => "wines", :action => "update", :id => "99"}, {:path => "#{wines_path}/99", :method => "put"})
+    # assert_generates is the most generous in require only partial path (i.e. no method mentioned)
+    assert_generates wines_path, :controller => :wines
+    assert_generates wines_path, :controller => :wines, :action => :index
+    assert_generates wines_path, :controller => :wines, :action => :create
+    assert_generates new_wine_path, :controller => :wines, :action => :new
+    assert_generates "wines/99", :controller => :wines, :action => :show, :id => 99
+    assert_generates "#{wines_path}/99", :controller => :wines, :action => :show, :id => 99
+    assert_generates "#{wines_path}/99", :controller => :wines, :action => :update, :id => 99
+    assert_generates "#{wines_path}/99", :controller => :wines, :action => :destroy, :id => 99
+    assert_generates "#{wines_path}/new", :controller => :wines, :action => :new
     assert_routing "#{wines_path}/new", :controller => "wines", :action => "new"
-    assert_routing ( {:method => 'post', :path => wines_path}, {:controller => "wines", :action => "create"} )
+    assert_routing({:path => wines_path}, {:controller => "wines", :action => "index"})
+    assert_routing({:method => :get, :path => wines_path}, {:controller => "wines", :action => "index"})
+    assert_routing({:method => :post, :path => wines_path}, {:controller => "wines", :action => "create"})
+    assert_routing({:method => :put, :path => "#{wines_path}/99"}, {:controller => "wines", :action => "update", :id => "99"})
+    assert_routing({:method => :delete, :path => "#{wines_path}/99"}, {:controller => "wines", :action => "destroy", :id => "99"})
+    assert_routing({:path => new_wine_path}, {:controller => "wines", :action => "new"})
+    assert_routing({:method => :get, :path => new_wine_path}, {:controller => "wines", :action => "new"})
+    assert_routing({:path => "wines/99/edit"}, {:controller => "wines", :action => "edit", :id => "99"})
+    assert_routing({:method => :get, :path => "wines/99/edit"}, {:controller => "wines", :action => "edit", :id => "99"})
   end
 
   test "should get index" do
