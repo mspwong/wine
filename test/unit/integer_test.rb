@@ -16,28 +16,51 @@ class IntegerTest < ActiveSupport::TestCase
     end
   end
 
-  context "an integer" do
-    should "retain its standard library methods" do
-      assert Integer, 4.class
-      assert 4.integer?
-      assert 4 == 4
-      assert 4.eql?(4)
-      four = 4
-      assert 4 == four
-      assert 4.eql?(four)
-      assert 4 == 4.0
-      assert !4.eql?(4.0)
-      assert 3 < 4
-      assert_equal 4, 4.round
-      assert_equal 4, 4.ceil
-      assert_equal 1, 4.modulo(3)
-      assert_equal "4", 4.to_s
-      assert_equal 99, -99.abs
-      assert 88.even?
-      assert !89.even?
-      assert !88.odd?
-      assert 89.odd?
-      assert Time.now.to_i.is_a?(Integer)
+  context "regression testing:  " do
+    context "an integer/fixnum/bignum" do
+      should "retain its standard library behavior" do
+        assert 4.is_a?(Integer)
+        assert 4.integer?
+        assert 4 == 4
+        assert 4.eql?(4)
+        four = 4
+        assert 4 == four
+        assert 4.eql?(four)
+        assert 4 == 4.0
+        assert !4.eql?(4.0)
+        assert 3 < 4
+        assert_equal 4, 4.round
+        assert_equal 4, 4.ceil
+        assert_equal 1, 4.modulo(3)
+        assert_equal "4", 4.to_s
+        assert_equal 99, -99.abs
+        assert 88.even?
+        assert !89.even?
+        assert !88.odd?
+        assert 89.odd?
+        assert -88.even?
+        assert !-88.odd?
+
+        test_fixnum = 99999999
+        assert_equal Fixnum, test_fixnum.class
+        assert test_fixnum.is_a?(Integer)
+        assert test_fixnum.is_a?(Fixnum)
+        assert_not_nil test_fixnum.hash
+        test_bignum = 999999999999999999999999999999
+        assert_equal Bignum, test_bignum.class
+        assert test_bignum.is_a?(Integer)
+        assert test_bignum.is_a?(Bignum)
+        assert_not_nil test_bignum.hash
+        assert Time.now.to_i.is_a?(Integer)
+      end
+    end
+
+    context "a non-integer" do
+      should "not have access to integer methods" do
+        assert !0.5.integer?
+        assert_raise(NoMethodError) { 0.5.even? }
+        assert_raise(NoMethodError) { 0.5.times { |i| puts "does not matter" } }
+      end
     end
   end
 
