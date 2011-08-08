@@ -31,11 +31,13 @@ class WinesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:wines)
+    assert_nil assigns(:wine)
   end
 
   test "should get new" do
     get :new
     assert_response :success
+    assert assigns(:wine).new_record?
   end
 
   test "should create wine" do
@@ -45,21 +47,25 @@ class WinesControllerTest < ActionController::TestCase
 
     assert_response :redirect
     assert_redirected_to wine_path(assigns(:wine))
+    assert !assigns(:wine).new_record?
   end
 
   test "should show wine" do
     get :show, :id => wines(:primus).to_param
     assert_response :success
+    assert_not_nil assigns(:wine)
   end
 
-  test "should get edit" do
+  test "should edit wine" do
     get :edit, :id => wines(:primus).to_param
     assert_response :success
+    assert_not_nil assigns(:wine)
   end
 
   test "should update wine" do
     put :update, :id => wines(:primus).to_param, :wine => { }
     assert_redirected_to wine_path(assigns(:wine))
+    assert_not_nil assigns(:wine)
   end
 
   test "should destroy wine" do
@@ -68,5 +74,6 @@ class WinesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to wines_path
+    assert_not_nil assigns(:wine)
   end
 end
