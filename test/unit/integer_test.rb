@@ -106,7 +106,7 @@ class IntegerTest < ActiveSupport::TestCase
       test_bignum = 999999999999999999999999999999
       assert test_bignum.is_a?(Fibonacci)
       assert test_bignum.is_a?(Bignum)
-      assert_not_nil test_bignum.closest_fibonacci_smaller_or_equal_to
+      assert_equal 898923707008479989274290850145, test_bignum.closest_fibonacci_smaller_or_equal_to
 
       assert_not_nil Time.now.to_i.closest_fibonacci_smaller_or_equal_to
     end
