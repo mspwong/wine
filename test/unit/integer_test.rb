@@ -18,7 +18,7 @@ class IntegerTest < ActiveSupport::TestCase
 
   context "regression testing:  " do
     context "an integer/fixnum/bignum" do
-      should "retain its standard library behavior" do
+      should "retain core Integer behavior" do
         assert 4.is_a?(Integer)
         assert 4.integer?
         assert 4 == 4
@@ -56,10 +56,13 @@ class IntegerTest < ActiveSupport::TestCase
     end
 
     context "a non-integer" do
-      should "not have access to integer methods" do
+      should "not have access to core Integer methods" do
         assert !0.5.integer?
         assert_raise(NoMethodError) { 0.5.even? }
         assert_raise(NoMethodError) { 0.5.times { |i| puts "does not matter" } }
+
+        assert !Time.now.is_a?(Integer)
+        assert_raise(NoMethodError) { Time.now.even? }
       end
     end
   end
