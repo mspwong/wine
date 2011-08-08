@@ -2,20 +2,6 @@ require "test_helper"
 
 class IntegerTest < ActiveSupport::TestCase
 
-  context "calling closest_fibonacci_smaller_or_equal_to on a non-integer" do
-    should "throw exception" do
-      assert_raise(NoMethodError) { 0.5.closest_fibonacci_smaller_or_equal_to }
-      assert_raise(NoMethodError) { 4.5.closest_fibonacci_smaller_or_equal_to }
-      assert_raise(NoMethodError) { -0.5.closest_fibonacci_smaller_or_equal_to }
-    end
-  end
-
-  context "calling closest_fibonacci_smaller_or_equal_to on a negative integer" do
-    should "throw exception" do
-      assert_raise(RuntimeError) { -1.closest_fibonacci_smaller_or_equal_to }
-    end
-  end
-
   context "regression testing:  " do
     context "an integer/fixnum/bignum" do
       should "retain core Integer behavior" do
@@ -74,8 +60,23 @@ class IntegerTest < ActiveSupport::TestCase
     end
   end
 
+  context "calling closest_fibonacci_smaller_or_equal_to on a non-integer" do
+    should "throw exception" do
+      assert_raise(NoMethodError) { 0.5.closest_fibonacci_smaller_or_equal_to }
+      assert_raise(NoMethodError) { 4.5.closest_fibonacci_smaller_or_equal_to }
+      assert_raise(NoMethodError) { -0.5.closest_fibonacci_smaller_or_equal_to }
+    end
+  end
+
+  context "calling closest_fibonacci_smaller_or_equal_to on a negative integer" do
+    should "throw exception" do
+      assert_raise(RuntimeError) { -1.closest_fibonacci_smaller_or_equal_to }
+    end
+  end
+
   context "calling closest_fibonacci_smaller_or_equal_to on a positive integer or zero" do
     should "return the correct value" do
+      assert_equal 0, -0.closest_fibonacci_smaller_or_equal_to
       assert_equal 0, 0.closest_fibonacci_smaller_or_equal_to
       assert_equal 1, 1.closest_fibonacci_smaller_or_equal_to
       assert_equal 2, 2.closest_fibonacci_smaller_or_equal_to
