@@ -1,4 +1,4 @@
-class Fixnum
+class Integer
   def closest_fibonacci_smaller_or_equal_to
 
     raise "undefined method 'closest_fibonacci_smaller_or_equal_to' for '#{self.to_s}':'#{self.class}'" unless self.class == Integer

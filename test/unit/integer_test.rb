@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FixnumTest < ActiveSupport::TestCase
+class IntegerTest < ActiveSupport::TestCase
 
   context "calling closest_fibonacci_smaller_or_equal_to on a positive integer or zero" do
     should "return the correct value" do
@@ -12,7 +12,7 @@ class FixnumTest < ActiveSupport::TestCase
 
   context "Fixnum types" do
     should "retain their base operations" do
-      assert Fixnum, 4.class
+      assert Integer, 4.class
       assert_equal "4", 4.to_s
       assert_equal 99, -99.abs
     end
