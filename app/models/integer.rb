@@ -1,4 +1,4 @@
-class Integer
+module Fibonacci
   def closest_fibonacci_smaller_or_equal_to
 
     raise "undefined method 'closest_fibonacci_smaller_or_equal_to' for '#{self.to_s}':'#{self.class}'" unless self.is_a? Integer
@@ -9,5 +9,9 @@ class Integer
 
     sequence[sequence.size-2]
   end
+end
 
+
+class Integer
+  include Fibonacci
 end
