@@ -54,6 +54,9 @@ class WinesControllerTest < ActionController::TestCase
     get :show, :id => wines(:primus).to_param
     assert_response :success
     assert_not_nil assigns(:wine)
+
+    #assert_template "users/moo"
+    #assert_not_nil assigns(:foo)
   end
 
   test "should edit wine" do

@@ -20,6 +20,14 @@ class WinesController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @wine }
     end
+
+    #render "goons"
+    #@foo = "wee"
+    #render "users/moo", :status => 501
+    #render :file => "/Users/mwong/workspace/husky/app/views/hee"
+    #render :text => "hi", :layout => true, :status => 500
+    #render :xml => @wine
+    #render :js => "alert('hey there');"
   end
 
   # GET /wines/new
