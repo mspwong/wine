@@ -23,19 +23,18 @@
       <%= wine_form.text_field :item_no %>
     </p>
 
+    <%= wine_form.label :tags %>
     <% wine_form.fields_for :tags do |tag_form| %>
-        <p>
-          <%= tag_form.label :name, 'Tags:' %>
+        <p class="my_tag">
           <%= tag_form.text_field :name %>
-        </p>
-        <% unless tag_form.object.nil? || tag_form.object.new_record? %>
-            <p>
+          <% unless tag_form.object.nil? || tag_form.object.new_record? %>
               <%= tag_form.label :_destroy, 'Remove:' %>
               <%= tag_form.check_box :_destroy %>
-            </p>
-        <% end %>
+          <% end %>
+        </p>
     <% end %>
 
+    <a id="add_tag" href="#">Add Tag</a>
     <p>
       <%= wine_form.submit 'Save' %>
     </p>
