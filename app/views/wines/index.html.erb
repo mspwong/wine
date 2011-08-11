@@ -19,7 +19,15 @@
     <td><%=h wine.vintage %></td>
     <td><%=h wine.region %></td>
     <td><%=h wine.item_no %></td>
-    <td><%=h wine.tags.collect { |t| t.name } %></td>
+    <% first = true %>
+    <td><%=h wine.tags.collect { |t|
+        if first
+            first = false
+            t.name
+        else
+            " | " + t.name
+        end
+    } %></td>
     <td><%= link_to 'Show', wine %></td>
     <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
     <td><%= link_to 'Destroy', wine, :confirm => 'Are you sure?', :method => :delete, :style => "color:red;" %></td>
