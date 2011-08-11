@@ -29,8 +29,8 @@
 </p>
 
 <p>
-  <b>Tags</b>
-  <%=h @wine.tags.collect { |t| t.name } %>
+  <b>Tags:</b>
+  <%=h format_tags @wine.tags %>
 </p>
 
 
