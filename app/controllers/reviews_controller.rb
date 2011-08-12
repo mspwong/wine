@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  layout "alternative"
+
   before_filter :find_wine, :only => [:index, :show, :new, :create, :edit, :update, :destroy]
   before_filter :find_review, :only =>  [:edit, :update, :destroy]
 

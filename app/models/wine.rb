@@ -21,7 +21,7 @@ class Wine < ActiveRecord::Base
 
   validates_presence_of :name
   validates_uniqueness_of :name, :case_sensitive => false
-  validates_length_of :name, :maximum => 30
+  validates_length_of :name, :maximum => 50
   validates_numericality_of :vintage, :only_integer => true, :allow_blank => true
   validates_presence_of :item_no
   validates_numericality_of :item_no, :only_integer => true

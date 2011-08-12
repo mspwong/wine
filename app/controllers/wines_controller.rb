@@ -16,18 +16,39 @@ class WinesController < ApplicationController
   # GET /wines/1
   # GET /wines/1.xml
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @wine }
-    end
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.xml  { render :xml => @wine }
+    #end
 
-    #render "goons"
+    #render "show"
+    #render :action => "show"
+
+    #render :nothing => true
     #@foo = "wee"
+    #render "goo"
     #render "users/moo", :status => 501
     #render :file => "/Users/mwong/workspace/husky/app/views/hee"
     #render :text => "hi", :layout => true, :status => 500
+    #render :text => "hi", :layout => 'alternative', :status => 500
     #render :xml => @wine
-    #render :js => "alert('hey there');"
+    #render :js => "alert('hey there');"         # TODO:  behaves like render :text despite rails guide.  breaks MVC separate anyway
+    #render :update do |page|                   # TODO:  behaves like render :text despite rails guide.  breaks MVC separate anyway
+    #  page.replace_html 'warning', "Invalid options supplied"
+    #end
+    #render :json => @wine
+    #render :xml => @wine
+    #render :file => "/Users/mwong/foo.txt", :content_type => 'text/html', :layout => 'alternative'
+    #render :file => "/Users/mwong/answer.png", :content_type => 'image/png'
+    #render :file => "answer.png", :location => "/Users/mwong", :content_type => 'image/png'
+    #render :file => "answer.png", :content_type => 'image/png'       # location is relative to this file under .../apps/views
+    #render :file => "wines/foo.xls", :content_type => 'application/ms-excel'
+
+    #redirect_to :action => "index"
+
+    #head :bad_request
+    #head :error
+    #head :created, :location => edit_wine_path(Wine.all.last)
   end
 
   # GET /wines/new
@@ -45,7 +66,7 @@ class WinesController < ApplicationController
   # GET /wines/1/edit.xml
   def edit
     respond_to do |format|
-      format.html # edit.html.erb
+      format.html { render :layout => 'alternative' }
       format.xml { render :xml => @wine }
     end
   end
