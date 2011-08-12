@@ -1,6 +1,6 @@
 <h1>Editing wine</h1>
 
-<%= render :partial => "wine_form" %>
+<%= render :partial => "wine_form", :locals => { :button_label => "Update"} %>
 
 <%= link_to 'Show', @wine %> |
 <%= link_to '>> Wines', wines_path %>

@@ -1,5 +1,9 @@
+<% content_for :head_title do %>
+    Add new wine
+<% end %>
+
 <h1>New wine</h1>
 
-<%= render :partial => 'wine_form' %>
+<%= render :partial => 'wine_form', :locals => { :button_label => "Create"} %>
 
 <%= link_to '>> Wines', wines_path %>
