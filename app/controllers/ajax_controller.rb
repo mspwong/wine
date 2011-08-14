@@ -8,7 +8,7 @@ class AjaxController < ApplicationController
     respond_to do |format|
       format.json do
         wines = Wine.all
-        return head :no_content if wines.blank?
+        return no_data_found if wines.blank?
 
         render :json => wines.to_json
       end
@@ -25,13 +25,17 @@ class AjaxController < ApplicationController
 
 private
 
+  def no_data_found
+    head :no_content
+  end
+
   def find_wine_by_id
     respond_to do |format|
       format.json do
         begin
           wine = Wine.find(params[:id])
         rescue ActiveRecord::RecordNotFound
-          return head :no_content if wine.blank?
+          return no_data_found
         end
 
         render :json => wine.to_json

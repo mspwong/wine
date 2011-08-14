@@ -22,8 +22,9 @@ $(function() {
             }
 
             var dataStr = "";
-            for (var i=0;  i<data.length; ++i) {
-                dataStr += "<p>" + JSON.stringify(data[i]) + "</p>";
+            for (var i=0;  i<data.length;  ++i) {
+//                if (i==6) continue;
+                dataStr = dataStr + "<p>" + JSON.stringify(data[i]) + "</p>";
             }
             $("#ajax_response").html(dataStr);
           }
