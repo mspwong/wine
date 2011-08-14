@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :wines, :has_many => :reviews
   map.resources :users, :has_many => :reviews,
                         :member => {:activate => :get}
-  map.resources :why_nots, :member => {:ajax_this => :get}
+  map.resources :why_nots, :member => {:ajax_page => :get, :ajax_this => :get}
 
   # See how all your routes lay out with "rake routes"
 
