@@ -1,18 +1,31 @@
 $(function() {
+    $.ajaxSetup({
+        async: true,
+        timeout: 50000,              // for server-side debug during dev
+        dataType: 'json',
+        beforeSend: function() {
+            $("#ajax_response").html("");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ajax error: " + errorThrown + ",     status code: " + jqXHR.status);
+        }
+    });
+
     $("#get_wines").click(function(){
         $.ajax({
           url: '/why_nots/get_wines',
           type: 'GET',
-          dataType: 'json',
           success: function(data, textStatus, jqXHR) {
+            if (jqXHR.status == 204) {
+                alert("no data found");
+                return;
+            }
+
             var dataStr = "";
             for (var i=0;  i<data.length; ++i) {
                 dataStr += "<p>" + JSON.stringify(data[i]) + "</p>";
             }
             $("#ajax_response").html(dataStr);
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            alert("error:  " + errorThrown);
           }
         });
     });
@@ -26,12 +39,13 @@ $(function() {
         $.ajax({
           url: '/why_nots/get_wine' + "?id=" + wine_id,
           type: 'GET',
-          dataType: 'json',
           success: function(data, textStatus, jqXHR) {
-            $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            alert("error:  " + errorThrown);
+              if (jqXHR.status == 204) {
+                  alert("no data found");
+                  return;
+              }
+
+              $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
           }
         });
     });
@@ -43,14 +57,16 @@ $(function() {
             return;
         }
         $.ajax({
-          url: '/why_nots/post_wine' + "?id=" + wine_id,
+          url: '/why_nots/post_wine',
+          data: {id: wine_id},
           type: 'POST',
-          dataType: 'json',
           success: function(data, textStatus, jqXHR) {
+              if (jqXHR.status == 204) {
+                  alert("no data found");
+                  return;
+              }
+
             $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-            alert("error:  " + errorThrown);
           }
         });
     });
