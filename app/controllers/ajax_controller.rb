@@ -13,4 +13,13 @@ class AjaxController < ApplicationController
     end
   end
 
+  def get_wine
+    respond_to do |format|
+      format.json do
+        wine = Wine.find(params[:id])
+        render :json => wine.to_json
+      end
+    end
+  end
+
 end
