@@ -35,4 +35,23 @@ $(function() {
           }
         });
     });
+
+    $("#post_wine").click(function(){
+        var wine_id = $("#post_wine_id").val().trim();
+        if (!wine_id) {
+            alert ("must first enter the wine id");
+            return;
+        }
+        $.ajax({
+          url: '/why_nots/post_wine' + "?id=" + wine_id,
+          type: 'POST',
+          dataType: 'json',
+          success: function(data, textStatus, jqXHR) {
+            $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            alert("error:  " + errorThrown);
+          }
+        });
+    });
 });
