@@ -1,7 +1,7 @@
 $(function() {
     $("#ajax_this").click(function(){
         $.ajax({
-          url: '/why_nots/1/ajax_this',
+          url: '/why_nots/ajax_this',
           type: 'GET',
           dataType: 'json',
           success: function(data, textStatus, jqXHR) {
@@ -12,7 +12,7 @@ $(function() {
             $("#ajax_response").html(dataStr);
           },
           error: function(jqXHR, textStatus, errorThrown) {
-            alert("error:  " + textStatus);
+            alert("error:  " + errorThrown);
           }
         });
     });
