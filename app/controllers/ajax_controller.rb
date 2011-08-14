@@ -1,10 +1,10 @@
-class WhyNotsController < ApplicationController
+class AjaxController < ApplicationController
 
   def ajax_page
     render "ajax_page"
   end
 
-  def ajax_this
+  def get_wines
     respond_to do |format|
       format.json do
         wines = Wine.all
