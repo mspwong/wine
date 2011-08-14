@@ -6,20 +6,33 @@ $(function() {
         beforeSend: function() {
             $("#ajax_response").html("");
         },
+//        success: function(data, textStatus, jqXHR) {
+//            alert("global success handler");
+//            if (jqXHR.status == 204) {
+//                alert("no data found");
+//                return;
+//            }
+//        },
         error: function(jqXHR, textStatus, errorThrown) {
             alert("ajax error: " + errorThrown + ",     status code: " + jqXHR.status);
         }
     });
+
+    var handleNoData = function(data, textStatus, jqXHR) {
+        if (jqXHR.status == 204) {
+            alert("no data found");
+            return true;
+        }
+        return false;
+    }
 
     $("#get_wines").click(function(){
         $.ajax({
           url: '/why_nots/get_wines',
           type: 'GET',
           success: function(data, textStatus, jqXHR) {
-            if (jqXHR.status == 204) {
-                alert("no data found");
+            if (handleNoData(data, textStatus, jqXHR))
                 return;
-            }
 
             var dataStr = "";
             for (var i=0;  i<data.length;  ++i) {
@@ -41,10 +54,8 @@ $(function() {
           url: '/why_nots/get_wine' + "?id=" + wine_id,
           type: 'GET',
           success: function(data, textStatus, jqXHR) {
-              if (jqXHR.status == 204) {
-                  alert("no data found");
-                  return;
-              }
+              if (handleNoData(data, textStatus, jqXHR))
+                return;
 
               $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
           }
@@ -62,10 +73,8 @@ $(function() {
           data: {id: wine_id},
           type: 'POST',
           success: function(data, textStatus, jqXHR) {
-              if (jqXHR.status == 204) {
-                  alert("no data found");
-                  return;
-              }
+            if (handleNoData(data, textStatus, jqXHR))
+                return;
 
             $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
           }
