@@ -17,6 +17,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 primus:
+  id: 1
   name: Veramonte Primus
   varietal: Other Red Wind
   vintage: 2007
@@ -24,6 +25,7 @@ primus:
   item_no: 99604
 
 cabernet:
+  id: 2
   name: Tilia Cabernet Sauvignon
   varietal: Cabernet Sauvignon
   vintage: 2009
