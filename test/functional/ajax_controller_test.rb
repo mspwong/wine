@@ -16,7 +16,7 @@ class AjaxControllerTest < ActionController::TestCase
   end
 
   test "should get wine by known id" do
-    get :get_wine, {:id => 1}
+    get :get_wine, {:id => 613896708}
     assert_response :success
     assert @response.status.include? "200"
   end
@@ -29,7 +29,7 @@ class AjaxControllerTest < ActionController::TestCase
   end
 
   test "should post wine by known id" do
-    post :get_wine, {:id => 1}
+    post :get_wine, {:id => 613896708}
     assert_response :success
     assert @response.status.include? "200"
   end
