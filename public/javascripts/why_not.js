@@ -7,7 +7,7 @@ $(function() {
         beforeSend: function() {
             $("#ajax_response").html("");
         },
-        success: function(textStatus, xmlHttpRequest, ajaxOptions) {
+        success: function(textStatus, xmlHttpRequest, data) {
             if (xmlHttpRequest.status == 204) {
                 alert("no data found");
                 return true;
@@ -24,12 +24,12 @@ $(function() {
             url: '/why_nots/get_wines',
             type: 'GET',
             success: function(data, textStatus, jqXHR) {
-                if ($.ajaxSettings.success.call(data, textStatus, jqXHR))
+                if ($.ajaxSettings.success.call(this, textStatus, jqXHR, data))
                     return;
 
                 var dataStr = "";
                 for (var i = 0; i < data.length; ++i) {
-                    if (i == 6) continue;
+//                    if (i == 6) continue;
                     dataStr = dataStr + "<p>" + JSON.stringify(data[i]) + "</p>";
                 }
                 $("#ajax_response").html(dataStr);
@@ -66,7 +66,7 @@ $(function() {
             data: {id: wine_id},
             type: 'POST',
             success: function(data, textStatus, jqXHR) {
-                if ($.ajaxSettings.success.call(data, textStatus, jqXHR))
+                if ($.ajaxSettings.success.call(this, textStatus, jqXHR, data))
                     return;
 
                 $("#ajax_response").html("<p>" + JSON.stringify(data) + "</p>");
