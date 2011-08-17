@@ -1,4 +1,4 @@
-class AjaxController < ApplicationController
+class WhyNots::AjaxController < ApplicationController
 
   def ajax_page
     render "ajax_page"
