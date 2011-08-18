@@ -14,4 +14,10 @@ class PigLatinTest < ActiveSupport::TestCase
     end
   end
 
+  context "'Hello World!!!'" do
+    should "be translated to 'Ellohay Orldway!!!'" do
+      assert_equal 'Ellohay Orldway!!!', PigLatin.translate('Hello World!!!')
+    end
+  end
+
 end
