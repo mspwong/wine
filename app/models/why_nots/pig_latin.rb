@@ -1,4 +1,4 @@
-class PigLatin
+class WhyNots::PigLatin
   def self.translate(text)
     text.split(" ").collect do |word|
       chars = word.downcase.gsub(/[^a-z ]/, '').gsub(/ /, '-').chars

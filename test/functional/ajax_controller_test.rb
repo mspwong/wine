@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AjaxControllerTest < ActionController::TestCase
+class WhyNots::AjaxControllerTest < ActionController::TestCase
   test "should get ajax page" do
     get :ajax_page
     assert_response :success

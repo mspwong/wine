@@ -21,7 +21,7 @@ $(function() {
 
     $("#get_wines").click(function() {
         $.ajax({
-            url: '/why_nots/get_wines',
+            url: 'get_wines',
             type: 'GET',
             success: function(data, textStatus, jqXHR) {
                 if ($.ajaxSettings.success.call(this, textStatus, jqXHR, data))
@@ -44,7 +44,7 @@ $(function() {
             return;
         }
         $.ajax({
-            url: '/why_nots/get_wine' + "?id=" + wine_id,
+            url: 'get_wine' + "?id=" + wine_id,
             type: 'GET',
             success: function(data, textStatus, jqXHR) {
                 if ($.ajaxSettings.success.call(this, textStatus, jqXHR, data))
@@ -62,7 +62,7 @@ $(function() {
             return;
         }
         $.ajax({
-            url: '/why_nots/post_wine',
+            url: 'post_wine',
             data: {id: wine_id},
             type: 'POST',
             success: function(data, textStatus, jqXHR) {

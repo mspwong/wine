@@ -37,10 +37,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :wines, :has_many => :reviews
   map.resources :users, :has_many => :reviews,
                         :member => {:activate => :get}
-  map.connect "why_nots/ajax_page", :controller => "why_nots/ajax", :action => "ajax_page"
-  map.connect "why_nots/get_wines", :controller => "why_nots/ajax", :action => "get_wines", :condition => { :method => :get }
-  map.connect "why_nots/get_wine", :controller => "why_nots/ajax", :action => "get_wine", :condition => { :method => :get }
-  map.connect "why_nots/post_wine", :controller => "why_nots/ajax", :action => "post_wine", :condition => { :method => :post }
+  map.connect "ajax_page", :controller => "why_nots/ajax", :action => "ajax_page"
+  map.connect "get_wines", :controller => "why_nots/ajax", :action => "get_wines", :condition => { :method => :get }
+  map.connect "get_wine", :controller => "why_nots/ajax", :action => "get_wine", :condition => { :method => :get }
+  map.connect "post_wine", :controller => "why_nots/ajax", :action => "post_wine", :condition => { :method => :post }
 
   # See how all your routes lay out with "rake routes"
 
